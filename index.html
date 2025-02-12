@@ -6,48 +6,73 @@
     <title>Valentine Surprise</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: red;
+            color: white;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            background-color: #ffe6e6;
+            overflow: hidden;
         }
-        .container {
-            margin-top: 50px;
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
         }
-        .poem {
+        .button {
+            background: white;
+            color: red;
             font-size: 20px;
             font-weight: bold;
-            color: #d6336c;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .poem {
+            font-size: 24px;
+            font-weight: bold;
+            color: pink;
+        }
+        .falling-heart {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); }
+            100% { transform: translateY(100vh); }
         }
     </style>
 </head>
 <body>
-    <audio id="bg-music" autoplay loop>
-        <source src="HuzoorMera.mp3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="container">
-        <h1>Astha, will you be my Valentine? ❤️</h1>
-        <p class="sub-text">A surprise awaits you inside...</p>
-        <button id="reveal-btn">Click YES to know</button>
-        <div id="poem-container" class="poem" style="display:none;">
-            "You are my melody divine,<br>
-            Will you be my Valentine?<br>
-            Your smile, stronger than the finest wine 🍷<br>
-            Your eyes make my heart entwine.<br>
-            With you, my soul is on cloud nine."<br>
-        </div>
-    </div>
-
+    <h1>Astha, will you be my Valentine? ❤️</h1>
+    <p>A surprise awaits you inside...</p>
+    <button class="button" onclick="playSurprise()">Click <span style="color: red;">YES</span> to know</button>
+    <p class="poem" id="poem" style="display: none;">
+        "You are my melody divine,<br>
+        Will you be my Valentine?<br>
+        Your smile, stronger than the finest wine 😉<br>
+        Your eyes make my heart entwine<br>
+        With you, my soul is on cloud nine."
+    </p>
+    <audio id="song" src="HuzoorMera.mp3.mp3"></audio>
     <script>
-        document.getElementById("reveal-btn").addEventListener("click", function() {
-            document.getElementById("poem-container").style.display = "block";
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            let audio = document.getElementById("bg-music");
-            audio.volume = 0.5;
-        });
+        function playSurprise() {
+            document.getElementById('poem').style.display = 'block';
+            let audio = document.getElementById('song');
+            audio.play();
+        }
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'falling-heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+        }
+        setInterval(createHearts, 1000);
     </script>
 </body>
 </html>
