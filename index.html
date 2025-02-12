@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .poem {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d6336c;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" autoplay loop>
+        <source src="HuzoorMera.mp3.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1>Astha, will you be my Valentine? ❤️</h1>
+        <p class="sub-text">A surprise awaits you inside...</p>
+        <button id="reveal-btn">Click YES to know</button>
+        <div id="poem-container" class="poem" style="display:none;">
+            "You are my melody divine,<br>
+            Will you be my Valentine?<br>
+            Your smile, stronger than the finest wine 🍷<br>
+            Your eyes make my heart entwine.<br>
+            With you, my soul is on cloud nine."<br>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("reveal-btn").addEventListener("click", function() {
+            document.getElementById("poem-container").style.display = "block";
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let audio = document.getElementById("bg-music");
+            audio.volume = 0.5;
+        });
+    </script>
+</body>
+</html>
