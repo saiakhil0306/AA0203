@@ -45,19 +45,21 @@
 </head>
 <body>
     <h1>Astha, will you be my Valentine? ❤️</h1>
-    <p>A surprise awaits you inside...</p>
-    <button class="button" onclick="playSurprise()">Click <span style="color: red;">YES</span> to know</button>
+    <p id="surpriseText">A surprise awaits you inside...</p>
+    <button class="button" id="surpriseButton" onclick="playSurprise()">Click <span style="color: red;">YES</span> to know</button>
     <p class="poem" id="poem" style="display: none;">
         "You are my melody divine,<br>
         Will you be my Valentine?<br>
         Your smile, stronger than the finest wine 😉<br>
-        Your eyes make my heart entwine<br>
-        With you, my soul is on cloud nine."
+        Your eyes makes my heart play a mandolin rhyme<br>
+        In your thoughts my soul feels like cloud nine."
     </p>
     <audio id="song" src="HuzoorMera.mp3.mp3"></audio>
     <script>
         function playSurprise() {
             document.getElementById('poem').style.display = 'block';
+            document.getElementById('surpriseText').style.display = 'none';
+            document.getElementById('surpriseButton').style.display = 'none';
             let audio = document.getElementById('song');
             audio.play();
         }
