@@ -61,9 +61,15 @@
             document.getElementById('poem').style.display = 'block';
             document.getElementById('surpriseText').style.display = 'none';
             document.getElementById('surpriseButton').style.display = 'none';
+            
             let audio = document.getElementById('song');
-            audio.play();
+
+            // Ensure the audio file exists and is playable
+            audio.play().catch(error => {
+                console.error("Audio file could not be played. Check if the file exists and is accessible.", error);
+            });
         }
+
         function createHearts() {
             for (let i = 0; i < 20; i++) {
                 let heart = document.createElement('div');
